@@ -1,0 +1,38 @@
+.profile {
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(1, 22, 39, 0.2),
+  0 6px 20px 0 rgba(1, 22, 39, 0.19);
+}
+.profile-img {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 4rem;
+}
+img {
+  border-radius: 50%;
+  max-width: 100%;
+}
+.profile-name {
+  text-align: center;
+}
+.profile-data-container {
+  border: 1px solid black;
+  background-color: blue;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 2px;
+}
+.profile-data-labels {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+.profile-data {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}

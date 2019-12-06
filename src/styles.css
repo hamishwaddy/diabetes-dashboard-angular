@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+.card {
+  border: 1px solid black;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(1, 22, 39, 0.2),
+  0 6px 20px 0 rgba(1, 22, 39, 0.19);
+}
+.card-title {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin: 2px;
+  border-radius: 4px;
+}
+.card-chart {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+  color: black;
+}
+
+.chart {
+  border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+}
+.chart-title {
+  background-color: blue;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  margin: 2px;
+  border-radius: 4px;
+}
+.chart-body {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding: 1rem;
+}

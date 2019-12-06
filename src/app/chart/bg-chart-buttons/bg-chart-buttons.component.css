@@ -1,0 +1,9 @@
+.btn.active {
+  background-color: black;
+  color: yellow;
+}
+
+.btn:hover {
+  background-color:transparent;
+  color: black;
+}

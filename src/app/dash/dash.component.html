@@ -1,1 +1,31 @@
-<p>dash works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+        <app-date-time></app-date-time>
+        <div class="row card-deck">
+          <div class="col-md-4">
+              <a routerLink="/bg">
+                <app-bg></app-bg>
+              </a>
+          </div>
+          <div class="col-md-4">
+              <a 
+              routerLink="/insulin">
+                <app-insulin></app-insulin>
+              </a>
+          </div>
+          <div class="col-md-4">
+            <a routerLink="/carbs">
+              <app-carbs></app-carbs>
+            </a>
+          </div>
+        </div>
+        <app-chart></app-chart>
+    </div>
+    <div class="col-md-3">
+        <app-profile></app-profile>
+    </div>
+  </div>
+</div>
+
+
