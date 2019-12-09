@@ -12,6 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private nightscoutService:NightscoutEntriesService) { }
 
   ngOnInit() {
-    this.nightscoutService.fetchData();
+    this.nightscoutService.fetchData(null);
   }
 }

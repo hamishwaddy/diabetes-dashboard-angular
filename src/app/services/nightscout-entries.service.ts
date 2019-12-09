@@ -4,19 +4,21 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Entries } from '../models/entries.model'
+import { Treatments } from '../models/treatments.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NightscoutEntriesService {
-  baseUrl: string = 'https://orriebetes.herokuapp.com/api/v1/entries.json?count=288';
+  baseUrl: string = 'https://orriebetes.herokuapp.com/api/v1/';
   entriesData: Entries [] = [];
+  treatmentsData: Treatments [] = [];
   bgValues: string[] = []; 
 
   constructor(private http:HttpClient) { }
 
-  fetchData() {
-    return this.http.get<{ [key: string]: Entries }>(this.baseUrl)
+  fetchData(urlExtn: string) {
+    return this.http.get<{ [key: string]: Entries }>(this.baseUrl + urlExtn)
     .pipe(
       map(responseData => {
       const entriesArray: Entries[] = [];
@@ -29,25 +31,23 @@ export class NightscoutEntriesService {
       // console.log(this.entriesData);
       return this.entriesData;
     }));
-    // .subscribe(data => {
-    //   this.entriesData = data;
-    // });
   }
 
-  // getBgValues() {
-  //   const data = this.entriesData;
-  //   const bgValues: string[] = [];
-  //   let sgvValue: number;
-  //   let bgValue: string;
-  //   console.log(data);
-  //   for (var i = 0; i < this.entriesData.length; i++) {
-  //     sgvValue = this.entriesData[i].sgv;
-  //     bgValue = (sgvValue / 18).toFixed(1);
-  //     bgValues.push(bgValue)
-  //   }
-  //   console.log(this.bgValues);
-  //   return this.bgValues = bgValues;
-  // }
+  fetchTreatmentsData(urlExtn: string) {
+    return this.http.get<{ [key: string]: Treatments }>(this.baseUrl + urlExtn)
+    .pipe(
+      map(responseData => {
+      const treatmentsArray: Treatments[] = [];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          treatmentsArray.push({ ...responseData[key], _id: key })
+        }
+      }
+      this.treatmentsData = treatmentsArray;
+      // console.log(this.entriesData);
+      return this.treatmentsData;
+    }));
+  }
 
 
 }

@@ -20,6 +20,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AuthComponent } from './auth/auth.component';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
 import { BgChartButtonsComponent } from './chart/bg-chart-buttons/bg-chart-buttons.component';
+import { BgThreeHourComponent } from './chart/bg-three-hour/bg-three-hour.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BgChartButtonsComponent } from './chart/bg-chart-buttons/bg-chart-butto
     BgThreeDayComponent,
     AuthComponent,
     LoadingSpinnerComponent,
-    BgChartButtonsComponent
+    BgChartButtonsComponent,
+    BgThreeHourComponent
   ],
   imports: [
     BrowserModule, 

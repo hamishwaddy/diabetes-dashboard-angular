@@ -9,10 +9,12 @@ import { ChartComponent } from './chart/chart.component';
 import { BgOneDayComponent } from './chart/bg-one-day/bg-one-day.component';
 import { BgThreeDayComponent } from './chart/bg-three-day/bg-three-day.component';
 import { AuthComponent } from './auth/auth.component';
+import { BgThreeHourComponent } from './chart/bg-three-hour/bg-three-hour.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/bg', pathMatch: 'full' },
   { path: 'bg', component: DashComponent, children: [
+    { path: '', component: BgOneDayComponent },
     { path: '1day', component: BgOneDayComponent },
     { path: '3day', component: BgThreeDayComponent }
   ] },
