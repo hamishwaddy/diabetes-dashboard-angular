@@ -23,10 +23,10 @@ export class BgOneDayComponent implements OnInit {
   title: string = 'BG TREND: Last 24 hours'
   nsData: Entries[] = [];
   isFetching: boolean = false;
-  bgValues: number[];
+  mmolValues: number[];
   urlExtn: string = '/entries.json?count=288';
 
-  // fakeData: number[] = [12, 12.5, 12.8, 12.0, 11.4, 10.7, 10.2, 9.9, 9.8, 9.7, 9.6] 
+  fakeData: number[] = [12, 12.5, 12.8, 12.0, 11.4, 10.7, 10.2, 9.9, 9.8, 9.7, 9.6] 
 
   public options: any = {
     chart: {
@@ -41,7 +41,7 @@ export class BgOneDayComponent implements OnInit {
     },
     tooltip: {
       formatter: function() {
-        return 'BG: ' + this.y;
+        return 'BG: ' + this.y + 'mmol';
       }
     },
     xAxis: {
@@ -50,7 +50,7 @@ export class BgOneDayComponent implements OnInit {
     series: [
       {
         name: 'BG Values',
-        data: [this.bgValues]
+        data: []
       }
     ]
   }
@@ -67,34 +67,38 @@ export class BgOneDayComponent implements OnInit {
     this.nightscoutService.fetchData().subscribe(data => {
       this.isFetching = false;
       this.nsData = data;
+      // console.log(this.nsData);
     });
   }
 
   convertToBgValues(data: Entries[]) {
-    let bgValues: number[] = [];
+    let mmolValues: number[] = [];
     let sgvValue: number;
-    let bgValue: number;
+    let mmolValue: number;
     for (var i = 0; i < data.length; i++) {
       sgvValue = data[i].sgv;
-      bgValue = +(sgvValue / 18).toFixed(1);
-      bgValues.push(bgValue)
+      mmolValue = +(sgvValue / 18).toFixed(1);
+      mmolValues.push(mmolValue)
     }
-    bgValues.reverse();
-    // console.log(bgValues);
+    // mmolValues.reverse();
+    mmolValues = this.mmolValues;
+    console.log(mmolValues);
     this.createChart();
-    return bgValues = this.bgValues;
+    // return mmolValues = this.mmolValues;
   }
 
   getChartData() {
     this.nightscoutService.fetchData().subscribe(data => {
       this.isFetching = false;
       this.nsData = data;
-      let bgArray: number[] = this.convertToBgValues(this.nsData);
+      // let mmolArray: number[] = this.convertToBgValues(this.nsData);
+      return this.convertToBgValues(this.nsData);
+      // return mmolArray;
     });  
   }
 
   createChart() {
-    // this.options.series[0]['data'] = data;
+    this.options.series[0]['data'] = this.fakeData;
     Highcharts.chart('container', this.options);
   }
 }
